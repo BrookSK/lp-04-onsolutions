@@ -1,21 +1,3 @@
 # ON Solutions — LP04 Integração de Sistemas
-# Garante documento índice e corrige 403 Forbidden no acesso à raiz do site.
-
+# Garante que o documento índice seja servido na raiz do domínio (evita 403 Forbidden).
 DirectoryIndex index.html
-
-# Não listar diretórios (evita exposição de arquivos), mas sem bloquear o índice
-Options -Indexes
-
-# Página inicial do domínio -> landing page (mantém a URL canônica /lp/integracao-de-sistemas/)
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  # Se acessar exatamente a raiz, encaminha para a LP preservando a query string
-  RewriteRule ^$ lp/integracao-de-sistemas/ [L,QSA]
-</IfModule>
-
-# Tipos corretos (caso o servidor não reconheça)
-<IfModule mod_mime.c>
-  AddType text/css .css
-  AddType application/javascript .js
-  AddType image/png .png
-</IfModule>
